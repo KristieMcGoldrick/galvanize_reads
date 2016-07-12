@@ -1,0 +1,18 @@
+a {
+  text-decoration: none;
+
+}
+
+.bookAuthLink {
+  display: flex;
+  flex-direction: column;
+  height: 40vh;
+  width: 25vw;
+  padding-left: 5vw;
+}
+
+.bookLink,
+.authLink {
+  height: 40vh;
+  width: 20vw;
+}
