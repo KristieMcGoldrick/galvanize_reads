@@ -1,0 +1,10 @@
+<h3>Edit {{author.name}} details</h3>
+<form action="/{{author.id}}/edit" method="POST">
+  <input type="string" name="name" placeholder="Name" value="{{author.name}}">
+
+  <input type="text" name="bio" placeholder="Author Bio" value="{{author.bio}}">
+
+  <input type="string" name="prof_pic" placeholder="Profile Picture" value="{{author.prof_pic}}">
+
+  <button type="submit">Edit {{author.name}}</button>
+</form>

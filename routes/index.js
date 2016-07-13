@@ -16,9 +16,6 @@ router.get('/author', function(req, res, next) {
   });
 });
 
-
-
-
 /* CLICK on ADD AUTHOR and GET FORM*/
 router.get('/author/new', function(request, response, next) {
   response.render('add-author');
@@ -36,41 +33,59 @@ router.post('/author', function(request, response, next) {
   });
 });
 /* DELETE on AUTHOR*/
-router.get('/delete/:id', function(request, response, next) {
-  queries.getAuthor(request.params.id).then(function(author) {
-    response.render('author/delete-author', { author: author });
-  });
+// router.get('/delete/:id', function(request, response, next) {
+//   queries.getAuthor(request.params.id).then(function(author) {
+//     response.render('author/delete-author', { author: author });
+//   });
+// });
+
+// router.post('/', function(request, response, next) {
+//   var author = {
+//     name: request.body.name
+//   };
+//   queries.addAuthor(author).then(function(author) {
+//     response.redirect('/author');
+//   });
+// });
+
+// router.delete('/:id', function(request, response, next) {
+//   queries.removeAuthor(request.params.id).then(function() {
+//     response.redirect('/author');
+//   });
+// });
+/*Click on HYPERLINK AUTHOR NAME and get their DETAIL*/
+router.get('/:id', function(req, res, next) {
+  knex('author').where({id: req.params.id}).first().then(function(data) {
+    res.render('detail', {author: data});
+  })
+});
+/*Click on HYPERLINK EDIT AUTHOR and update*/
+router.get('/:id/edit', function(req, res, next) {
+  knex('author').where({id: req.params.id}).first().then(function(data) {
+    res.render('edit', {author: data})
+  })
 });
 
-router.post('/', function(request, response, next) {
-  var author = {
-    name: request.body.name
-  };
-  queries.addAuthor(author).then(function(author) {
-    response.redirect('/author');
-  });
-});
-
-router.delete('/:id', function(request, response, next) {
-  queries.removeAuthor(request.params.id).then(function() {
-    response.redirect('/author');
-  });
+router.post('/:id/edit', function(req, res, next) {
+  knex('author').where({id: req.params.id}).update(req.body).then(function () {
+    res.redirect('/' + req.params.id);
+  })
 });
 
 /* Click on BOOKS and pull up the books page*/
 router.get('/book', function(request, response, next) {
-  knex('book').select().then(function(book){
-    response.render('book', { book: book });
+  knex('book').select().then(function(data){
+    response.render('book', { book: data });
   });
 });
 
-/* CLICK on ADD AUTHOR and GET FORM*/
+/* CLICK on ADD BOOK and GET FORM*/
 router.get('/book/new', function(request, response, next) {
   response.render('add-book');
 });
 
 
-/*POST ADDED Author to DB and to AUTHOR page*/
+/*POST ADDED Book to DB and to BOOK page*/
 router.post('/book', function(request, response, next) {
   var book = {
   title: request.body.title,
