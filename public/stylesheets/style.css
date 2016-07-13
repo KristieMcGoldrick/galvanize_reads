@@ -3,6 +3,8 @@ body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
   outline: 1px solid hsla(0, 0%, 0%, 0.2);
   padding-left: 5vw;
+  height: 100vh;
+  width: 100vw;
 }
 
 a {
@@ -14,4 +16,19 @@ a {
   width: 100%;
   height: 20vh;
   background-color: lightgrey;
+}
+/*Book and Author Hyperlinks*/
+a {
+  text-decoration: none;
+
+}
+
+.bookAuthLink {
+  display: flex;
+  flex-direction: column;
+  height: 20vh;
+  width: 1vw;
+  padding-left: 5vw;
+  margin-right: 0vw;
+  padding-right: 0vw;
 }

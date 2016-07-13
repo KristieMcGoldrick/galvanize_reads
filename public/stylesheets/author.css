@@ -1,0 +1,31 @@
+.authorProfile {
+  display: block;
+}
+
+.profPic {
+  max-width: 15vw;
+  max-height: 15vh;
+  padding: 1vw;
+}
+
+.newAuthor {
+  width: 20vw;
+  height: 5vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(250, 211, 74);
+}
+
+
+.addAuth {
+  display:flex;
+  flex-direction: column;
+  width: 75vw;
+}
+
+.newAuthSubmit {
+  padding: 1em;
+  margin-top: 1em;
+  background-color: rgb(39, 242, 143)
+}
