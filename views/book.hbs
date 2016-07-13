@@ -1,0 +1,22 @@
+<section>
+  <h2>Books</h2>
+  <ul>
+    {{#each book}}
+    <div class= 'row bookDetail'>
+      <div class='col-xs-4'>
+        <img  class= 'bookImg' src= "{{this.cover}}" alt="#"/>
+      </div>
+      <div class='col-xs-8'>
+        <li>
+          <h3>Title: {{this.title}}</h3>
+          <p>{{this.topic}}</p>
+            <p>{{this.description}}</p>
+            <a href='book/delete/{{id}}'>Delete
+            </a>
+        </li>
+      </div>
+    </div>
+    {{/each}}
+  </ul>
+  <a class='new' href="book/new">Add Book</a>
+</section>

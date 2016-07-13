@@ -13,4 +13,8 @@ module.exports = {
   removeAuthor: function(id) {
   return knex('author').where({ id: id }).del();
 },
+
+addBook: function(book) {
+  return knex('book').insert(book);
+}
 }

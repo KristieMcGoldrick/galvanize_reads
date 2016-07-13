@@ -16,6 +16,9 @@ router.get('/author', function(req, res, next) {
   });
 });
 
+
+
+
 /* CLICK on ADD AUTHOR and GET FORM*/
 router.get('/author/new', function(request, response, next) {
   response.render('add-author');
@@ -33,25 +36,50 @@ router.post('/author', function(request, response, next) {
   });
 });
 /* DELETE on AUTHOR*/
-// router.get('/delete/:id', function(request, response, next) {
-//   queries.getAuthor(request.params.id).then(function(author) {
-//     response.render('author/delete-author', { author: author });
-//   });
-// });
+router.get('/delete/:id', function(request, response, next) {
+  queries.getAuthor(request.params.id).then(function(author) {
+    response.render('author/delete-author', { author: author });
+  });
+});
 
-// router.post('/', function(request, response, next) {
-//   var author = {
-//     name: request.body.name
-//   };
-//   queries.addAuthor(author).then(function(author) {
-//     response.redirect('/author');
-//   });
-// });
+router.post('/', function(request, response, next) {
+  var author = {
+    name: request.body.name
+  };
+  queries.addAuthor(author).then(function(author) {
+    response.redirect('/author');
+  });
+});
 
-// router.delete('/:id', function(request, response, next) {
-//   queries.removeAuthor(request.params.id).then(function() {
-//     response.redirect('/author');
-//   });
-// });
+router.delete('/:id', function(request, response, next) {
+  queries.removeAuthor(request.params.id).then(function() {
+    response.redirect('/author');
+  });
+});
 
+/* Click on BOOKS and pull up the books page*/
+router.get('/book', function(request, response, next) {
+  knex('book').select().then(function(book){
+    response.render('book', { book: book });
+  });
+});
+
+/* CLICK on ADD AUTHOR and GET FORM*/
+router.get('/book/new', function(request, response, next) {
+  response.render('add-book');
+});
+
+
+/*POST ADDED Author to DB and to AUTHOR page*/
+router.post('/book', function(request, response, next) {
+  var book = {
+  title: request.body.title,
+    topic: request.body.topic,
+    description: request.body.description,
+    cover: request.body.cover
+  };
+  queries.addBook(book).then(function(book) {
+    response.redirect('/book');
+  });
+});
 module.exports = router;
