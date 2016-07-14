@@ -16,9 +16,6 @@ router.get('/author', function(req, res, next) {
   });
 });
 
-
-
-
 /* CLICK on ADD AUTHOR and GET FORM*/
 router.get('/author/new', function(request, response, next) {
   response.render('add-author');
@@ -35,7 +32,8 @@ router.post('/author', function(request, response, next) {
     response.redirect('/author');
   });
 });
-/* DELETE on AUTHOR*/
+/* DELETE an AUTHOR*/
+/*Not Working Currently*/
 router.get('/delete/:id', function(request, response, next) {
   queries.getAuthor(request.params.id).then(function(author) {
     response.render('author/delete-author', { author: author });
@@ -64,13 +62,13 @@ router.get('/book', function(request, response, next) {
   });
 });
 
-/* CLICK on ADD AUTHOR and GET FORM*/
+/* CLICK on ADD BOOK and GET FORM to add a book*/
 router.get('/book/new', function(request, response, next) {
   response.render('add-book');
 });
 
 
-/*POST ADDED Author to DB and to AUTHOR page*/
+/*POST ADDED Book to DB and to Book page*/
 router.post('/book', function(request, response, next) {
   var book = {
   title: request.body.title,
@@ -82,4 +80,6 @@ router.post('/book', function(request, response, next) {
     response.redirect('/book');
   });
 });
+
+
 module.exports = router;
