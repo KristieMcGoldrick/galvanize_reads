@@ -1,3 +1,5 @@
+
+<a href="book/new" class="btn btn-primary btn-lg active addAuthButton" role="button">Add Book</a>
 <section>
   <h2>Books</h2>
   <ul>
@@ -7,7 +9,7 @@
         <img  class= 'bookImg' src= "{{this.cover}}" alt="#"/>
       </div>
       <div class='col-xs-8'>
-        <li>
+        <liclass='bookTitle'>
           <h3>Title: {{this.title}}</h3>
           <p>{{this.topic}}</p>
             <p>{{this.description}}</p>
@@ -18,5 +20,4 @@
     </div>
     {{/each}}
   </ul>
-  <a class='new' href="book/new">Add Book</a>
 </section>
